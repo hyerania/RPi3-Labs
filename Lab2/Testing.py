@@ -4,6 +4,8 @@ import time            #calling for time to provide delays in program
 IO.setwarnings(False)  #do not show any warnings
 x=1
 y=1
+
+#Initialize the pins for Matrix LEDs
 IO.setmode (IO.BCM)  #programming the GPIO by BCM pin numbers. (like PIN29 as'GPIO5')
 IO.setup(12,IO.OUT)  #initialize GPIO12 as an output.
 IO.setup(22,IO.OUT)  #initialize GPIO22 as an output.
@@ -21,6 +23,16 @@ IO.setup(19,IO.OUT)
 IO.setup(13,IO.OUT)
 IO.setup(6,IO.OUT)
 IO.setup(5,IO.OUT)
+
+#Initialize the pins for DIP Switch
+IO.setup(2,IO.IN)  #initialize GPIO2 (PIN 3) as an output.
+IO.setup(3,IO.IN)  #initialize GPIO3 (PIN 5) as an output.
+IO.setup(4,IO.IN)
+IO.setup(14,IO.IN)
+IO.setup(15,IO.IN)
+IO.setup(10,IO.IN)
+IO.setup(9,IO.IN)
+IO.setup(11,IO.IN)
 
 PORTVALUE = [128,64,32,16,8,4,2,1]
 #value of pin in each port 
@@ -121,60 +133,35 @@ def PORTP(pinp):    #assigning GPIO logic for positive terminals by taking 'pinp
         IO.output(18,0) #if bit7 of 8bit 'pinp' is false pull PIN18 low
 
 
-while 1:
+while True:
+    full_bits = ""
+    dip_1 = IO.input(2)
+    dip_2 = IO.input(3)
+    dip_3 = IO.input(4)
+    dip_4 = IO.input(14)
+    dip_5 = IO.input(15)
+    dip_6 = IO.input(10)
+    dip_7 = IO.input(9)
+    dip_8 = IO.input(11)
+    full_bits4 = full_bits + str(dip_1) + str(dip_2) + str(dip_3) + str(dip_4)
+    full_bits8 = full_bits + str(dip_5) + str(dip_6) + str(dip_7) + str(dip_8)
+    print full_bits
+    hex_value4 = hex(int(full_bits4,2))
+    hex_value8 = hex(int(full_bits4,2))
+    print hex_value4
+    print hex_value8
+    time.sleep(1)
+
     for y in range (100):   #execute loop 100 times
         for x in range (8): #execute the loop 8 times incrementing x value from zero to seven
             pin  = PORTVALUE[x]  #assigning value to 'pin' for each digit
             PORT(pin);  #mapping appropriate GPIO 
-            pinp= A[x]  #assigning character 'C' value to 'pinp' 
-            PORTP(pinp); #turning the GPIO to show character 'C'
+            pinp= hex_value4[x]  #assigning character of the first 4 bits 
+            PORTP(pinp); #turning the GPIO to show character of the first 4 bits
+            pinp= hex_value8[x] #assigning character of the last 4 bits
+            PORTP(pinp); #turning the GPIO to show character of the last 4 bits
             time.sleep(0.0005) #wait for 0.5msec
 
-    for y in range (100):
-        for x in range (8):
-            pin  = PORTVALUE[x]
-            PORT(pin);
-            pinp= B[x]
-            PORTP(pinp);
-            time.sleep(0.0005)
-
-    for y in range (100):
-        for x in range (8):
-            pin  = PORTVALUE[x]
-            PORT(pin);
-            pinp= C[x]
-            PORTP(pinp);
-            time.sleep(0.0005)
-
-    for y in range (100):
-        for x in range (8):
-            pin  = PORTVALUE[x]
-            PORT(pin);
-            pinp= D[x]
-            PORTP(pinp);
-            time.sleep(0.0005)
-
-    for y in range (100):
-        for x in range (8):
-            pin  = PORTVALUE[x]
-            PORT(pin);
-            pinp= E[x]
-            PORTP(pinp);
-            time.sleep(0.0005)
-    for y in range (100):
-        for x in range (8):
-            pin  = PORTVALUE[x]
-            PORT(pin);
-            pinp= F[x]
-            PORTP(pinp);
-            time.sleep(0.0005)
-    for y in range (100):
-        for x in range (8):
-            pin  = PORTVALUE[x]
-            PORT(pin);
-            pinp= Z[x]
-            PORTP(pinp);
-            time.sleep(0.0005)
     pinp= 0
     PORTP(pinp);
     time.sleep(1)

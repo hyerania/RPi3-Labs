@@ -12,36 +12,36 @@ void SquareWave(){
 		delayMicroseconds(5);
 	}
 	// 200 MHz
-	while(1){
-		digitalWrite(Pin, 1);
-		delayMicroseconds(0.0025);
-		digitalWrite(Pin, 0);
-		delayMicroseconds(0.0025);
-	}
+	// while(1){
+	// 	digitalWrite(Pin, 1);
+	// 	delayMicroseconds(0.0025);
+	// 	digitalWrite(Pin, 0);
+	// 	delayMicroseconds(0.0025);
+	// }
 	// 600 MHz
-	while(1){
-		digitalWrite(Pin, 1);
-		delayMicroseconds(0.000833);
-		digitalWrite(Pin, 0);
-		delayMicroseconds(0.000833);
-	}
+	// while(1){
+	// 	digitalWrite(Pin, 1);
+	// 	delayMicroseconds(0.000833);
+	// 	digitalWrite(Pin, 0);
+	// 	delayMicroseconds(0.000833);
+	// }
 	// 800 MHz
-	while(1){
-		digitalWrite(Pin, 1);
-		delayMicroseconds(0.000625);
-		digitalWrite(Pin, 0);
-		delayMicroseconds(0.000625);
-	}
+	// while(1){
+	// 	digitalWrite(Pin, 1);
+	// 	delayMicroseconds(0.000625);
+	// 	digitalWrite(Pin, 0);
+	// 	delayMicroseconds(0.000625);
+	// }
 }
 
-void TriangularWave(){
+// void TriangularWave(){
 
-}
+// }
 
 int main(){
 	if(wiringPiSetupPhys() == -1){
 		exit(1);
 	}
-
+	SquareWave();
 	
 }

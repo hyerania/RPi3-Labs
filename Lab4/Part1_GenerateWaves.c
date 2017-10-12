@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <wiringPi.h>
 #include <stdint.h>
+#include Pin 7
 
 void SquareWave(){
 	// 0.1 MHz

@@ -1,8 +1,13 @@
 #include <wiringPi.h>
 #include <stdio.h>
 #define outputPin 7
-#define C4 261
-#define period 1000 //1 second
+// #define period 1000 //1 second
+#define a 440
+#define c 261
+#define d 294
+#define e 329
+#define f 349
+#define g 391
 
 void tone (unsigned int frequency, unsigned int period){ //Frequency = note, period = duration
 	long half_cycle = (long)(1000000/frequency);
@@ -14,12 +19,37 @@ void tone (unsigned int frequency, unsigned int period){ //Frequency = note, per
 		delayMicroseconds(half_cycle);
 	}
 
-	digitalwrite(outputPin, LOW);
+	digitalWrite(outputPin, LOW);
 	delay(20);
 }
 
 void run (){
-	tone(FREQUENCY, PERIOD);
+	tone(g, 750);
+	tone(a, 250);
+	tone(g, 500);
+	tone(f, 500);
+	tone(e, 500);
+	tone(f, 500);
+	tone(g, 1000);
+	tone(d, 500);
+	tone(e, 500);
+	tone(f, 1000);
+	tone(e, 500);
+	tone(f, 500);
+	tone(g, 1000);
+	tone(g, 750);
+	tone(a, 250);
+	tone(g, 500);
+	tone(f, 500);
+	tone(e, 500);
+	tone(f, 500);
+	tone(g, 1000);
+	tone(d,1000);
+	tone(g,1000);
+	tone(e,1000);
+	tone(c,1000);
+
+	delay(500);
 }
 
 int main (){

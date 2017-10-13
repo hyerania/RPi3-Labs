@@ -11,12 +11,12 @@ def triangle_wave():
 	tStep = 0.05
 	while True:
 		#voltage = 2048*(1.0+0.5*math.sin(6.2832*t))
-		for i in range (0, t/2, tStep):
-			voltage = (2048/t) * i
+		for i in range (0, 10*t, 1):
+			voltage = (2048/t) * (i*tStep)
 			dac.set_voltage(int(voltage))
 			time.sleep(0.0005)
-		for i in range (t/2, 0, -tStep):
-			voltage = (2048/t) * i
+		for i in range (10*t, 0, -1):
+			voltage = (2048/t) * (i*tStep)
 			dac.set_voltage(int(voltage))
 			time.sleep(0.0005)
 

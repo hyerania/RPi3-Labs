@@ -4,7 +4,7 @@ import numpy
 from PyQt4 import QtCore, QtGui
 import PyQt4.Qwt5 as Qwt
 
-numPoints=100
+numPoints=1000
 xs=numpy.arange(numPoints)
 ys=numpy.sin(3.14159*xs*10/numPoints)
 
